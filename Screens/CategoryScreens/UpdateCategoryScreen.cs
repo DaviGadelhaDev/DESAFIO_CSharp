@@ -1,14 +1,14 @@
 using Blog.Models;
 using Blog.Repositories;
 
-namespace Blog.Screens.ProfileScrens
+namespace Blog.Screens.CategoryScreen
 {
-    public class UpdateProfileScreen
+    public class UpdateCategoryScreen
     {
         public static void Load()
         {
             Console.Clear();
-            Console.WriteLine("Atualizar perfil");
+            Console.WriteLine("Nova categoria");
             Console.WriteLine("-------------");
             Console.WriteLine("ID: ");
             int id = int.Parse(Console.ReadLine()!);
@@ -16,27 +16,27 @@ namespace Blog.Screens.ProfileScrens
             string name = Console.ReadLine()!;
             Console.WriteLine("Slug: ");
             string slug = Console.ReadLine()!;
-            Update(new Profile{
+            Update(new Category{
                 Id = id,
                 Name = name,
                 Slug = slug
             });
 
             Console.ReadKey();
-            MenuProfileScreen.Load();
+            MenuCategoryScreen.Load();
         }
 
-        public static void Update(Profile profile)
+        public static void Update(Category category )
         {
             try
             {
-                var repository = new Repository<Profile>(Database.Connection);
-                repository.Update(profile);
+                var repository = new Repository<Category>(Database.Connection);
+                repository.Update(category);
 
-                Console.WriteLine("Perfil atualizado com sucesso");
+                Console.WriteLine("Categoria atualizada com sucesso");
             }catch(Exception e)
             {
-                Console.WriteLine("Não foi possível atualizar o perfil");
+                Console.WriteLine("Não foi possivel atualizar a categoria");
                 Console.WriteLine(e.Message);
             }
         }
