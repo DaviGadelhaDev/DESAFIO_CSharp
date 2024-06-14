@@ -1,6 +1,5 @@
 using Blog.Repositories;
 using Blog.Screens.UserScreen;
-using Blog.Models;
 
 namespace Blog.Screens.UserScreens
 {
@@ -22,11 +21,9 @@ namespace Blog.Screens.UserScreens
 
             foreach(var user in users)
             {
-                Console.WriteLine($"{user.Id} - {user.Name}");
+                Console.WriteLine(user.Name);
                 foreach(var profile in user.Profiles)
-                {
-                    Console.WriteLine(profile.Name);
-                }
+                    Console.WriteLine($" - {profile.Name}");
             }
         }
     }
